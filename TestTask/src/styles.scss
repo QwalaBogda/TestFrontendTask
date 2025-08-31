@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mansory {
+    column-gap: 16px;
+    column-width: 320px;
+}
+
+@media (max-with: 900px ){
+    .mansory{
+        column-width: 260px;
+    }
+}
+
+@media(max-with: 600px ){
+    .mansory{
+        column-width: 200px;
+    }
+}
+
+.mansory-item{
+    break-inside: avoid;
+    margin-bottom: 16px;
+}
+
+.fab-toggle{
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1000;
+}
+
+#map{
+    width: 100%;
+    height: calc(100vh - 64px);
+}
+
+@media(max-with: 600px){
+    #map {
+        height: calc(100vh - 56px);
+    }
+}
