@@ -1,0 +1,22 @@
+<div style="padding:16px; max-width:800px; margin:0 auto;">
+  <button mat-button (click)="goBack()" style="margin-bottom:16px;">
+    Назад к списку новостей
+  </button>
+
+  <mat-card *ngIf="newsItem">
+    <img mat-card-image *ngIf="newsItem.image" [src]="newsItem.image" alt="" />
+    <mat-card-header>
+      <mat-card-title>{{ newsItem.title || newsItem.name || 'Без названия' }}</mat-card-title>
+      <mat-card-subtitle *ngIf="newsItem.created_at as d">
+        {{ d | date:'medium' }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ newsItem.content || newsItem.text || newsItem.body || newsItem.description || '' }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <div *ngIf="!newsItem">
+    Новость не найдена.
+  </div>
+</div>

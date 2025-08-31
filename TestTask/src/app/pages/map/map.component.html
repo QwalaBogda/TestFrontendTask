@@ -1,0 +1,3 @@
+<div *ngIf="store.loading()" class="loading-message">Загрузка точек...</div> 
+<div *ngIf="store.error()" class="error-message">{{ store.error() }}</div> 
+<div id="map"></div>

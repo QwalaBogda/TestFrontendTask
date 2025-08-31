@@ -1,0 +1,185 @@
+// цвета
+$primary-color: #3f51b5;
+$primary-dark: #303f9f;
+$accent-color: #ff4081;
+$text-color: #333;
+$light-text: #fff;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+mat-sidenav-container {
+  height: 100vh;
+  
+  // Стили для боковой панели
+  mat-sidenav {
+    width: 250px;
+    background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+    box-shadow: $shadow;
+    
+    mat-nav-list {
+      padding: 16px 0;
+      
+      a {
+        color: $light-text;
+        padding: 12px 20px;
+        margin: 4px 8px;
+        border-radius: 4px;
+        transition: $transition;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        
+        &:hover {
+          background-color: rgba(240, 239, 239, 0.1);
+          transform: translateX(5px);
+        }
+        
+        &[routerLink="/news"]::before {
+          content: "article";
+          font-family: 'Material Icons';
+          margin-right: 12px;
+        }
+        
+        &[routerLink="/map"]::before {
+          content: "map";
+          font-family: 'Material Icons';
+          margin-right: 12px;
+        }
+        
+        &[routerLink="/login"]::before {
+          content: "login";
+          font-family: 'Material Icons';
+          margin-right: 12px;
+        }
+        
+        &:not([routerLink]):before {
+          content: "logout";
+          font-family: 'Material Icons';
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+  
+  mat-sidenav-content {
+    background-color: #f5f5f5;
+    
+    mat-toolbar {
+      position: relative;
+      z-index: 100;
+      box-shadow: $shadow;
+      padding: 0 16px;
+    
+      .toolbar-content {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        
+        .logo {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          font-weight: 500;
+          font-size: 1.2rem;
+          color: black;
+          text-decoration: none;
+          
+          i {
+            margin-right: 8px;
+          }
+        }
+        
+        .desktop-nav {
+          display: flex;
+          align-items: center;
+          
+          .nav-button {
+            margin: 0 8px;
+            position: relative;
+            overflow: hidden;
+            transition: $transition;
+            border-radius: 4px;
+            
+            &:before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: -100%;
+              width: 100%;
+              height: 100%;
+              background: rgba(255, 255, 255, 0.1);
+              transition: $transition;
+              z-index: -1;
+            }
+            
+            &:hover:before {
+              left: 0;
+            }
+            
+            &.active {
+              background-color: rgba(255, 255, 255, 0.15);
+            }
+          }
+        }
+        
+        .mobile-menu-button {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Анимации
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  
+  .mobile-menu-button {
+    display: block !important;
+  }
+  
+  .logo span {
+    font-size: 1rem;
+  }
+
+  span{
+    color: white;
+  }
+}
+
+@media (max-width: 480px) {
+  mat-sidenav {
+    width: 100% !important;
+  }
+  
+  .logo span {
+    display: none;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-button.active {
+  background-color: rgba(255, 255, 255, 0.15);
+}
